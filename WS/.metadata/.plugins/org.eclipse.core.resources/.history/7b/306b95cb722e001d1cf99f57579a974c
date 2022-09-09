@@ -1,0 +1,14 @@
+package in.banking.statement1;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@EnableFeignClients
+public class BankingStatement1Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(BankingStatement1Application.class, args);
+	}
+
+}

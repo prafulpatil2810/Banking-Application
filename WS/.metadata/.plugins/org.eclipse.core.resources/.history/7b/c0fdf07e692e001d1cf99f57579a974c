@@ -1,0 +1,5 @@
+package in.banking.txn1.entities;
+
+public enum TxnType {
+
+}

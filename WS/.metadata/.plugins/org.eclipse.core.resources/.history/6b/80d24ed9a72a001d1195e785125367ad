@@ -1,0 +1,5 @@
+package in.atr.user.entities;
+
+public enum UserType {
+	Admin, Customer
+}

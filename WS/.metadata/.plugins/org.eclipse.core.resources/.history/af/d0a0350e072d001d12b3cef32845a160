@@ -1,0 +1,5 @@
+package in.banking.txn.services;
+
+public interface TxnService {
+
+}

@@ -1,0 +1,13 @@
+package in.banking.statement;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class BankingStatementApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(BankingStatementApplication.class, args);
+	}
+
+}

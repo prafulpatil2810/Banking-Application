@@ -1,0 +1,87 @@
+package in.atr.admins.entities;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "admins")
+public class Admin {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long adminId;
+	private String adminName;
+	private String mailId;
+	private String password;
+	private Date dateOfBirth;
+	private String mobileNumber;
+
+	public Admin() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Admin(Long adminId, String adminName, String mailId, String password, Date dateOfBirth,
+			String mobileNumber) {
+		super();
+		this.adminId = adminId;
+		this.adminName = adminName;
+		this.mailId = mailId;
+		this.password = password;
+		this.dateOfBirth = dateOfBirth;
+		this.mobileNumber = mobileNumber;
+	}
+
+	public Long getAdminId() {
+		return adminId;
+	}
+
+	public void setAdminId(Long adminId) {
+		this.adminId = adminId;
+	}
+
+	public String getAdminName() {
+		return adminName;
+	}
+
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
+	}
+
+	public String getMailId() {
+		return mailId;
+	}
+
+	public void setMailId(String mailId) {
+		this.mailId = mailId;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+
+}

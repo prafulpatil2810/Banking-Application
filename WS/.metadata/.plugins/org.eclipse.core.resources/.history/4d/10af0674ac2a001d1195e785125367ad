@@ -1,0 +1,42 @@
+package in.atr.user.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import in.atr.user.entities.User;
+import in.atr.user.exception.UserException;
+import in.atr.user.repo.UserRepo;
+
+@Service
+public class UserServiceImpl implements UserService{
+
+	@Autowired
+	private UserRepo usRepo;
+	
+	@Override
+	public User add(User us) throws UserException {
+		if(us.getUserId() != null && usRepo.existsById(us.getUserId()))
+		return usRepo.save(us);
+	}
+
+	@Override
+	public User getByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean existsById(Long userId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

@@ -1,0 +1,90 @@
+package in.atr.user.entities;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+
+@Entity
+@Table(name = "user")
+public class User {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long userId;
+	
+	@NotBlank(message = "Required")
+	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
+	private String password;
+	
+	@NotBlank(message="fullName is mandate")
+	private String name;
+	
+	@NotBlank(message="mobile is mandate")
+	@Pattern(regexp = "[1-9][0-9]{9}",message = "Only ten digits are expected for mobile")
+	private String mobile;
+	
+	@NotBlank(message="mailId is mandate")
+	@Email(message = "A valid mailId expected")
+	private String mailId;
+
+	public User() {
+	}
+
+	public User(Long userId,
+			@NotBlank(message = "Required") @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$") String password,
+			@NotBlank(message = "fullName is mandate") String name,
+			@NotBlank(message = "mobile is mandate") @Pattern(regexp = "[1-9][0-9]{9}", message = "Only ten digits are expected for mobile") String mobile,
+			@NotBlank(message = "mailId is mandate") @Email(message = "A valid mailId expected") String mailId) {
+		super();
+		this.userId = userId;
+		this.password = password;
+		this.name = name;
+		this.mobile = mobile;
+		this.mailId = mailId;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getMailId() {
+		return mailId;
+	}
+
+	public void setMailId(String mailId) {
+		this.mailId = mailId;
+	}
+
+}

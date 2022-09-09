@@ -1,0 +1,40 @@
+package in.banking.user1.services;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import java.util.Optional;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import in.banking.user1.entities.AccountHolder;
+import in.banking.user1.exceptions.AccountHolderException;
+import in.banking.user1.repos.AccountHolderRepo;
+
+@ExtendWith(SpringExtension.class)
+public class AccountHolderServiceImplTest {
+	
+	@Mock
+	AccountHolderRepo ahRepo;
+	
+	@InjectMocks
+	AccountHolderServiceImpl accServiceImpl;
+	
+	@Test
+	void testGetById() throws AccountHolderException{
+		AccountHolder expected = new AccountHolder(101L, "Praful Patil", "7387344522", "praful.rp28@gmail.com");
+		Mockito.when(ahRepo.findById(Mockito.anyLong())).thenReturn(Optional.of(expected));
+		AccountHolder actual = accServiceImpl.getById(101L);
+		assertEquals(expected, actual);
+	}
+	
+}

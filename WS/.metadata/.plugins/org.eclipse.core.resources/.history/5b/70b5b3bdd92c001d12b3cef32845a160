@@ -1,0 +1,28 @@
+package in.atr.admins.entities;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "admins")
+public class Admin {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long adminId;
+	private String adminName;
+	private String mailId;
+	private String password;
+	private Date dateOfBirth;
+	private String mobileNumber;
+
+	public Admin() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

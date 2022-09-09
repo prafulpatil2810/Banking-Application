@@ -1,0 +1,38 @@
+package in.banking.user1.services;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import in.banking.user1.exceptions.AccountHolderException;
+import in.banking.user1.repos.AccountHolderRepo;
+
+@ExtendWith(MockitoExtension.class)
+@DisplayName("AccountHolderServiceImpl")
+public class AccountHolderServiceImplTest {
+	
+	@Mock
+	AccountHolderRepo accRepo;
+	
+	AccountHolderServiceImpl accServiceImpl;
+	
+	@BeforeEach
+	void init() {
+		accServiceImpl = new AccountHolderServiceImpl(accRepo);
+	}
+	
+	@AfterEach
+	void clean() {
+		accServiceImpl = null;
+	}
+	
+	@Test
+	void testGetByIdPositiveCase() throws AccountHolderException{
+		
+	}
+
+}

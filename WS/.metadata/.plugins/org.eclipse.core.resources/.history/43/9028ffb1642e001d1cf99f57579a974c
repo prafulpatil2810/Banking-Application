@@ -1,0 +1,5 @@
+package in.banking.user1.exceptions;
+
+public class AccountHolderException {
+
+}

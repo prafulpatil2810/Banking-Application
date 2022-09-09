@@ -1,0 +1,5 @@
+package in.atr.user.controllers;
+
+public class UserController {
+
+}

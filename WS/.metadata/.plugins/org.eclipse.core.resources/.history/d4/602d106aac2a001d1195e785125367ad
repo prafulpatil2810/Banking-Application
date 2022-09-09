@@ -1,0 +1,14 @@
+package in.atr.user.services;
+
+import java.util.List;
+
+import in.atr.user.entities.User;
+import in.atr.user.exception.UserException;
+
+public interface UserService {
+
+	User add(User us) throws UserException;
+	User getByName(String name);
+	List<User> getAll();
+	boolean existsById(Long userId);
+}

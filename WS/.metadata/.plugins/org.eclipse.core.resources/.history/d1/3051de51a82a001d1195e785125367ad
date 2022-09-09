@@ -1,0 +1,8 @@
+package in.atr.user.exception;
+
+public class UserException {
+
+	public UserException(String message) {
+		super(message);
+	}
+}

@@ -1,0 +1,5 @@
+package in.atr.admins.repo;
+
+public interface AdminRepo {
+
+}

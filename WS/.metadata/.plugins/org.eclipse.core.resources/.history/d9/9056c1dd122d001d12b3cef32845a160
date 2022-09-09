@@ -1,0 +1,5 @@
+package in.banking.statement.entities;
+
+public class AccountHolder {
+
+}

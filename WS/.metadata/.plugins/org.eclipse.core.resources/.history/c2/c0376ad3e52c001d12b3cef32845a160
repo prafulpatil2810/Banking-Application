@@ -1,0 +1,108 @@
+package in.atr.admins.entities;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+@Entity
+@Table(name = "admins")
+public class Admin {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long adminId;
+	
+	@NotBlank(message="fullName is mandate")
+	private String adminName;
+	
+	@NotBlank(message="mailId is mandate")
+	@Email(message = "A valid mailId expected")
+	private String mailId;
+	
+	@NotBlank(message = "Required")
+	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
+	private String password;
+	
+	@NotBlank(message = "DOB is mandatory")
+	private Date dateOfBirth;
+	
+	@NotBlank(message = "Required")
+	@Pattern(regexp = "[1-9][0-9]{9}",message = "Only ten digits are expected for mobile")
+	private String mobileNumber;
+
+	public Admin() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Admin(Long adminId, @NotBlank(message = "fullName is mandate") String adminName,
+			@NotBlank(message = "mailId is mandate") @Email(message = "A valid mailId expected") String mailId,
+			@NotBlank(message = "Required") @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$") String password,
+			@NotBlank(message = "DOB is mandatory") Date dateOfBirth,
+			@NotBlank(message = "Required") @Pattern(regexp = "[1-9][0-9]{9}", message = "Only ten digits are expected for mobile") String mobileNumber) {
+		super();
+		this.adminId = adminId;
+		this.adminName = adminName;
+		this.mailId = mailId;
+		this.password = password;
+		this.dateOfBirth = dateOfBirth;
+		this.mobileNumber = mobileNumber;
+	}
+
+
+
+	public Long getAdminId() {
+		return adminId;
+	}
+
+	public void setAdminId(Long adminId) {
+		this.adminId = adminId;
+	}
+
+	public String getAdminName() {
+		return adminName;
+	}
+
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
+	}
+
+	public String getMailId() {
+		return mailId;
+	}
+
+	public void setMailId(String mailId) {
+		this.mailId = mailId;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+	
+}

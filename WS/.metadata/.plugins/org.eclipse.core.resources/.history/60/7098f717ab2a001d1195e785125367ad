@@ -1,0 +1,5 @@
+package in.atr.user.services;
+
+public interface UserService {
+
+}
