@@ -44,12 +44,12 @@ public class TxnController {
 		return ResponseEntity.ok(txnService.getPeriodicTxnsByAhId(ahId, start, end));
 	}
 	
-	@PostMapping
+	@PostMapping("/save")
 	public ResponseEntity<Txn> addTxn(@RequestBody @Valid Txn txn,BindingResult results) throws TxnException, AccountHolderException{
 		return saveTxn(txn,results,"ADD");
 	}
 	
-	@PutMapping
+	@PutMapping("/update")
 	public ResponseEntity<Txn> updateTxn(@RequestBody @Valid Txn txn,BindingResult results) throws TxnException, AccountHolderException{
 		return saveTxn(txn,results,"UPDATE");
 	}
@@ -60,12 +60,12 @@ public class TxnController {
 					.map(err->err.getDefaultMessage()).reduce((m1,m2)->m1+","+m2).orElse(null));
 	
 		ResponseEntity<Txn> re = null;
-		if(operation.equals("ADD"))
+		if(operation.equals("ADD")) {
 			re = new ResponseEntity<Txn>(txnService.add(txn),HttpStatus.CREATED);
-		else
+		}else {
 			re = new ResponseEntity<Txn>(txnService.update(txn),HttpStatus.ACCEPTED);
+		}
 		return re;
 	}
-	
 	
 }

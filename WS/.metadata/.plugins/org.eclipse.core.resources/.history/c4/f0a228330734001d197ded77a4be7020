@@ -1,0 +1,19 @@
+package in.banking.txn1.service;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import in.banking.txn1.repos.TxnRepo;
+import in.banking.txn1.services.TxnServiceImpl;
+
+@ExtendWith(MockitoExtension.class)
+@DisplayName("TxnServiceImpl")
+public class TxnServiceImplTest {
+
+	@Mock
+	TxnRepo txnRepo;
+	
+	TxnServiceImpl txnServiceImpl;
+}

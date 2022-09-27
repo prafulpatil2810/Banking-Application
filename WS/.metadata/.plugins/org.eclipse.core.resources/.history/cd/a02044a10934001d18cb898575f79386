@@ -1,0 +1,44 @@
+package in.banking.txn1.service;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import in.banking.txn1.exceptions.TxnException;
+import in.banking.txn1.repos.TxnRepo;
+import in.banking.txn1.services.TxnServiceImpl;
+
+@ExtendWith(MockitoExtension.class)
+@DisplayName("TxnServiceImpl")
+public class TxnServiceImplTest {
+
+	@Mock
+	TxnRepo txnRepo;
+	
+	TxnServiceImpl txnServiceImpl;
+	
+	@BeforeEach
+	void init() {
+		txnServiceImpl = new TxnServiceImpl(txnRepo);
+	}
+	
+	@Test
+	@DisplayName("#deleting when ID does not exist")
+	void testDeleteByIdPositiveCase() throws TxnException{
+		/*
+		 * Mockito.doNothing().when(txnServiceImpl).deleteById((long)1);
+		 * assertDoesNotThrow(() -> {txnServiceImpl.deleteById((long)1);});
+		 */
+		
+		TxnException thrown = assertThrows(TxnException.class, ()-> {
+			Mockito.when(txnServiceImpl.deleteById((long) 1));
+		});
+	}
+}

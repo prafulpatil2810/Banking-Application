@@ -25,6 +25,11 @@ public class AccountHolder {
 	public AccountHolder() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public AccountHolder(Long ahId) {
+		super();
+		this.ahId = ahId;
+	}
 
 	public AccountHolder(Long ahId, Double currentBalance, Set<Txn> txns) {
 		super();

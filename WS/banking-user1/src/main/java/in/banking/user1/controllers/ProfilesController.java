@@ -25,32 +25,33 @@ public class ProfilesController {
 
 	@Autowired
 	private AccountHolderService ahService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<AccountHolder>> getAll(){
+	public ResponseEntity<List<AccountHolder>> getAll() {
 		return ResponseEntity.ok(ahService.getAll());
 	}
-	
+
 	@GetMapping("/{ahId}")
-	public ResponseEntity<AccountHolder> getById(@PathVariable("ahId")Long ahId){
+	public ResponseEntity<AccountHolder> getById(@PathVariable("ahId") Long ahId) {
 		AccountHolder ah = ahService.getById(ahId);
-		return ah!=null?ResponseEntity.ok(ah):new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		return ah != null ? ResponseEntity.ok(ah) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
+
 	@GetMapping("/{ahId}/exists")
-	public ResponseEntity<Boolean> existsById(@PathVariable("ahId")Long ahId){
+	public ResponseEntity<Boolean> existsById(@PathVariable("ahId") Long ahId) {
 		return ResponseEntity.ok(ahService.existsById(ahId));
 	}
-	
-	@PostMapping
+
+	@PostMapping("/save")
 	public ResponseEntity<AccountHolder> add(
-			@RequestBody @Valid AccountHolder ah,BindingResult bindingResult) throws AccountHolderException{
-		
-		if(bindingResult.hasErrors()) {
-			throw new AccountHolderException(bindingResult.getAllErrors().stream()
-					.map(err -> err.getDefaultMessage()).reduce((m1,m2)->m1+","+m2).orElse(null));
+
+			@RequestBody @Valid AccountHolder ah, BindingResult bindingResult) throws AccountHolderException {
+
+		if (bindingResult.hasErrors()) {
+			throw new AccountHolderException(bindingResult.getAllErrors().stream().map(err -> err.getDefaultMessage())
+					.reduce((m1, m2) -> m1 + "," + m2).orElse(null));
 		}
-		
-		return new ResponseEntity(ahService.add(ah),HttpStatus.CREATED);
+
+		return new ResponseEntity<AccountHolder>(ahService.add(ah), HttpStatus.CREATED);
 	}
 }

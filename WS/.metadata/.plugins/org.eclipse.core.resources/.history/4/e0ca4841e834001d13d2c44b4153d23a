@@ -1,0 +1,69 @@
+package in.banking.txn1.service;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.mockito.Mockito.when;
+
+import java.time.LocalDate;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import in.banking.txn1.entities.AccountHolder;
+import in.banking.txn1.entities.Txn;
+import in.banking.txn1.entities.TxnType;
+import in.banking.txn1.exceptions.AccountHolderException;
+import in.banking.txn1.exceptions.TxnException;
+import in.banking.txn1.repos.AccountHolderRepo;
+import in.banking.txn1.repos.TxnRepo;
+import in.banking.txn1.services.TxnServiceImpl;
+
+@ExtendWith(MockitoExtension.class)
+@DisplayName("TxnServiceImpl")
+public class TxnServiceImplTest {
+
+	@Mock
+	TxnRepo txnRepo;
+
+	@Mock
+	AccountHolderRepo ahRepo;
+
+	TxnServiceImpl txnServiceImpl;
+
+	@BeforeEach
+	void init() {
+		this.txnServiceImpl = new TxnServiceImpl(this.txnRepo);
+	}
+
+	@Test
+	@DisplayName("#deleteById should delete a record given existing record")
+	void testDeleteById() throws TxnException {
+		Mockito.doNothing().when(txnRepo).deleteById(1L);
+		assertDoesNotThrow(() -> {
+			txnRepo.deleteById(1L);
+		});
+	}
+	
+	@Test
+	@DisplayName("#getBalance")
+	void testGetBalance() {
+		
+	}
+
+	@Test
+	@DisplayName("#getPeriodicTransactionsByDate")
+	void getPeriodicTxnsByAhId() {
+		when(txnRepo.getPeriodicTxnByAhId((long) 2, LocalDate.of(2022, 9, 12), LocalDate.of(2020, 10, 28))).thenReturn(null);
+	}
+	
+	@Test
+	@DisplayName("#addTxn")
+	void addTxn() {
+		Txn txn = new Txn((long)2, "Electricity", LocalDate.of(2022, 9, 10), TxnType.DEBIT, 800.00, ((long)1));
+	}
+}

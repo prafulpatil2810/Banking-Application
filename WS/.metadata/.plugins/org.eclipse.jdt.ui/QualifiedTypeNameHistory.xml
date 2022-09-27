@@ -27,4 +27,21 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="in.atr.user.entities.UserType"/>
     <fullyQualifiedTypeName name="in.atr.user.entities.User"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.DisplayName"/>
+    <fullyQualifiedTypeName name="in.banking.user1.exceptions.AccountHolderException"/>
+    <fullyQualifiedTypeName name="in.banking.user1.services.AccountHolderServiceImpl"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.AfterEach"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.Test"/>
+    <fullyQualifiedTypeName name="org.mockito.junit.jupiter.MockitoExtension"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.extension.ExtendWith"/>
+    <fullyQualifiedTypeName name="org.mockito.Mock"/>
+    <fullyQualifiedTypeName name="in.banking.user1.repos.AccountHolderRepo"/>
+    <fullyQualifiedTypeName name="in.banking.user1.entities.AccountHolder"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.BeforeEach"/>
+    <fullyQualifiedTypeName name="java.time.LocalDate"/>
+    <fullyQualifiedTypeName name="in.banking.txn1.entities.AccountHolder"/>
+    <fullyQualifiedTypeName name="org.mockito.Mockito"/>
+    <fullyQualifiedTypeName name="in.banking.txn1.entities.Txn"/>
+    <fullyQualifiedTypeName name="in.banking.txn1.entities.TxnType"/>
+    <fullyQualifiedTypeName name="in.banking.txn1.repos.AccountHolderRepo"/>
 </qualifiedTypeNameHistroy>

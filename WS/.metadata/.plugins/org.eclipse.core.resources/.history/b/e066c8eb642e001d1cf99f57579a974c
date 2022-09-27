@@ -1,5 +1,0 @@
-package in.banking.user1.repos;
-
-public interface AccountHolderRepo {
-
-}

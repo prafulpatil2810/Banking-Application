@@ -28,6 +28,10 @@ public class TxnServiceImpl implements TxnService {
 
 	@Autowired
 	private TxnRepo txnRepo;
+	
+	public TxnServiceImpl(TxnRepo txnRepo) {
+		this.txnRepo=txnRepo;
+	}
 
 	@Override
 	public List<Txn> getPeriodicTxnsByAhId(Long ahId, LocalDate start, LocalDate end) throws AccountHolderException {
@@ -61,7 +65,7 @@ public class TxnServiceImpl implements TxnService {
 		ah.setCurrentBalance(txn.getType() == TxnType.CREDIT ? cb + txn.getAmount() : cb - txn.getAmount());
 		ah.getTxns().add(txn);
 		txn.setHolder(ah);
-		ahRepo.save(ah);
+//		ahRepo.save(ah);
 
 		return txnRepo.save(txn);
 	}

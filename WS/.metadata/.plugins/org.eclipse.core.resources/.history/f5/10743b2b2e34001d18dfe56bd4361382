@@ -1,0 +1,76 @@
+package in.banking.user1.services;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import in.banking.user1.entities.AccountHolder;
+import in.banking.user1.exceptions.AccountHolderException;
+import in.banking.user1.repos.AccountHolderRepo;
+
+@ExtendWith(MockitoExtension.class)
+@DisplayName("AccountHolderServiceImpl")
+public class AccountHolderServiceImplTest {
+
+	@InjectMocks
+	private AccountHolderServiceImpl ahServiceImpl;
+	
+	@Mock
+	private AccountHolderRepo ahRepo;
+
+	@BeforeEach
+	void init() {
+		ahServiceImpl = new AccountHolderServiceImpl(ahRepo);
+	}
+
+	@AfterEach
+	void clean() {
+		ahServiceImpl = null;
+	}
+
+	@Test
+	@DisplayName("#getAll should return values that exists")
+	void testGetAllPositiveCases() throws AccountHolderException {
+		AccountHolder[] ahArr = new AccountHolder[] {
+				new AccountHolder((long) 1, "Ajay Patil", "1234567890", "ajaypatil123@gmail.com"),
+				new AccountHolder((long) 2, "Ajay More", "1234567890", "ajaypatil123@gmail.com") };
+		List<AccountHolder> expected = Arrays.asList(ahArr);
+		Mockito.when(ahServiceImpl.getAll()).thenReturn(expected);
+		List<AccountHolder> actual = ahServiceImpl.getAll();
+		assertEquals(actual, expected);
+	}
+
+	@Test
+	@DisplayName("#getById")
+	void testExistById() {
+		AccountHolder ah = new AccountHolder((long) 1, "Ajay Patil", "1234567890", "ajaypatil123@gmail.com");
+		AccountHolder expected = ah;
+		Mockito.when(ahServiceImpl.existsById(1L)).thenReturn(true);
+		Boolean actualResult = ahServiceImpl.existsById((long) 1);
+		assertThat(actualResult).isTrue();
+	}
+
+	@Test
+	@DisplayName("#getById")
+	void testGetById() {
+		AccountHolder expected = new AccountHolder(); 
+		expected.setAhId(1L);
+		Mockito.when(ahRepo.getById(1L).thenReturn(expected);
+	}
+
+}

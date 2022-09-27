@@ -9,5 +9,6 @@ public interface AccountHolderService {
 	AccountHolder add(AccountHolder ah) throws AccountHolderException;
 	AccountHolder getById(Long ahId);
 	List<AccountHolder> getAll();
-	boolean existsById(Long ahId);	
+	boolean existsById(Long ahId);
+	
 }

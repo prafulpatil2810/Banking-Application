@@ -15,10 +15,16 @@ public class AccountHolderServiceImpl implements AccountHolderService{
 	@Autowired
 	private AccountHolderRepo ahRepo;
 	
+	public AccountHolderServiceImpl(AccountHolderRepo ahRepo) {
+		this.ahRepo=ahRepo;
+	}
+	
 	@Override
 	public AccountHolder add(AccountHolder ah) throws AccountHolderException {
 		if(ah.getAhId()!=null && ahRepo.existsById(ah.getAhId()))
 			throw new AccountHolderException("A record with the given id already found");
+		if(ah.getFullName()==null)
+			throw new AccountHolderException("FullName cannot be empty");
 		return ahRepo.save(ah);
 	}
 

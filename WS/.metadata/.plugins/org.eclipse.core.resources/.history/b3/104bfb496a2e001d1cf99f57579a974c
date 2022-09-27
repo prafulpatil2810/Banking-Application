@@ -1,5 +1,0 @@
-package in.banking.txn1.repos;
-
-public interface TxnRepo {
-
-}

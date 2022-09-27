@@ -1,5 +1,0 @@
-package in.banking.txn1.exceptions;
-
-public class AccountHolderException {
-
-}
